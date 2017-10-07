@@ -1,64 +1,32 @@
-<!DOCTYPE html>
-<html lang='en'>
-<!-- lang='en' คือการกำหนดภาษาหลักให้กับเว็บไซต์-->
-<head>
-	<meta charset="UTF-8">
-	<title>CMM 19</title>
-	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.3/css/bulma.min.css">
-	<!-- css ของ bulma เป็นfrontend อย่างหนึ่ง เพื่อเว็บ Mobilefirst ถ้าใช้ได้แล้วตัวฟอนต์หน้าตาจะเปลี่ยนไป-->
-	<link rel="stylesheet" href="/assets/home.css">
-	<!--ลิ้งกับหน้า home.css ทำให้แถบmenubarไปอยู่ตรงกลาง -->
-</head>
-<body>
-	<header>
-		<div class="has-text-centered">
-			<!--เพื่อเลื่อนโลโก้ ไปอยู่ตรงกลาง เอาโค้ดมาจากbulma-->
-			<img src="/assets/images/logo.png" alt="" width="145" height="auto">
-		</div>
-		<nav class="navbar-tabs">
-			<a href="#" class="navbar-item">BAS</a>
-			<!--navbar-item คือคำสั่งหนึ่งของ bulma-->
-			<a href="#" class="navbar-item">BOAT</a>
-			<a href="#" class="navbar-item">SAM</a>
-			<a href="#" class="navbar-item">KORN</a>
-			<a href="#" class="navbar-item">JACK</a>
-			<a href="#" class="navbar-item">PIDNU</a>
-			<a href="#" class="navbar-item">NOTE</a>
-			<a href="#" class="navbar-item">FEW</a>
-		</nav>
+{% extends 'Layout/base.twig'%}
 
-	</header>
+{% block stylesheet %}
+<link rel="stylesheet" href="/assets/home.css">
+{% endblock content %}
+{% block content %}
+	
 	<main>
 		<!--ถือเนื้อหาของเว็บไซต์-->
 		<section class="banner">
 			<div class="highlight">
 				<div class="columns">
-					<div class="column highlight-item">
+					<a class="column highlight-item" style="background-image: url({{highlight.url}});">
 					<!--ปกติต้องใส่ไซส์แต่ตัว Bulmaจะคำนวนให้ว่าควรใช้คอลัมเท่าไหร่ แต่ถ้าอยากได้ไม่เท่ากันให้ใส่ตัวเลขเอง-->
-						<h1> สวนทาง </h1>
-					</div>
+						<h1> {{ highlight.title }} </h1>
+					</a>
 				</div>
 			</div>
 				
 			<div class="thumbnail">
 				<div class="columns is-marginless"><!--ใส่เพื่อให้ขอบไม่ติดลบ-->
-					<div class="column thumbnail-item is-paddingless"
-					style ="background-image: url(/assets/images/home/banner/thumbnail-1.jpg);">
-					one
+					{% for item in thumbnail %}
+					<div href="#" class="column thumbnail-item"  
+					style ="background-image: url({{ item.url }});">
+				{{ item.title }}
 					</div>
 					<!--ใส่ is-paddingless เพื่อทำให้ช่องว่างระหว่างรูปหายไป-->
-					<div class="column thumbnail-item is-paddingless"
-						style ="background-image: url(/assets/images/home/banner/thumbnail-2.jpg);">
-					two
-					</div>
-					<div class="column thumbnail-item is-paddingless"
-						style ="background-image: url(/assets/images/home/banner/thumbnail-3.jpg);">
-					three
-					</div>
-					<div class="column thumbnail-item is-paddingless"
-						style ="background-image: url(/assets/images/home/banner/thumbnail-4.jpg);">
-					four
-					</div>
+					
+					{% endfor %}
 				</div>
 			</div>
 		</section>
@@ -82,7 +50,7 @@
 						<div class="card">
 							<div class="card-image">
 								<figure class="image is-3by2">
-									<img src="assets/images/home/we-preset/Sam.jpg" alt="image-1">
+									<img src="assets/images/home/we-preset/img-1.jpg" alt="image-1">
 								</figure>
 							</div>
 							<div class="card-content">
@@ -103,7 +71,7 @@
 						<div class="card">
 							<div class="card-image">
 								<figure class="image is-3by2">
-									<img src="assets/images/home/we-preset/JACK.jpg" alt="image-1">
+									<img src="assets/images/home/we-preset/img-1.jpg" alt="image-1">
 								</figure>
 							</div>
 							<div class="card-content">
@@ -136,7 +104,7 @@
 									Sippakorn Sittiwong
 								</h4>
 								<p>
-									พี่ค่ายสุดเข้ม
+									พี่ค่ายสุดฮอต
 								</p>
 							</div>
 						</div>
@@ -149,15 +117,15 @@
 								</figure>
 							</div>
 							<div class="card-content">
-								<h5 class="category">Public Space</h5>
+								<h5 class="category">คนหล่อประจำปี2017</h5>
 								<h3 class="title ia-spaced is-4">
-									Lorem
+									BAM
 								</h3>
 								<h4 class="subtitle is-6">
-									เรื่อง
+									Phakorn Tripaiboon 
 								</h4>
 								<p>
-									KFC น่ากินจัง
+									พี่ปีสองสุดฮอต
 								</p>
 							</div>
 						</div>
@@ -170,19 +138,19 @@
 								</figure>
 							</div>
 							<div class="card-content">
-								<h5 class="category">Public Space</h5>
+								<h5 class="category">คนหล่อประจำปี2017</h5>
 								<h3 class="title ia-spaced is-4">
-									Lorem
+									Boat
 								</h3>
 								<h4 class="subtitle is-6">
-									เรื่อง
+									Chanasak Auetidsakul
 								</h4>
 								<p>
-									KFC น่ากินจัง
+									เดือนคณะสุดฮอต
 								</p>
 							</div>
 						</div>
-					</a> 
+					</a>
 					<a href="#" class="column is-one-third"><!--is-one-third คือ 1 ใน 3-->
 						<div class="card">
 							<div class="card-image">
@@ -191,15 +159,15 @@
 								</figure>
 							</div>
 							<div class="card-content">
-								<h5 class="category">Public Space</h5>
+								<h5 class="category">คนหล่อประจำปี2017</h5>
 								<h3 class="title ia-spaced is-4">
-									Lorem
+									PINGPONG
 								</h3>
 								<h4 class="subtitle is-6">
-									เรื่อง
+									Thatsuang Insena
 								</h4>
 								<p>
-									KFC น่ากินจัง
+									หนุ่มน้อยสุดฮอต
 								</p>
 							</div>
 						</div>
@@ -208,7 +176,5 @@
 			</div>
 		</section>
 	</main>
+{% endblock %}
 
-
-</body>
-</html>
